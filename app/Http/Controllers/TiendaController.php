@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tienda;
+use App\Models\Cliente;
+use App\Models\Vendedor;
 
 class TiendaController extends Controller
 {
@@ -21,7 +23,9 @@ class TiendaController extends Controller
      */
     public function create()
     {
-        //
+        $vendedores = Vendedor::all();
+        $clientes = Cliente::all();
+        return view('tiendas.create', ['vendedores' => $vendedores, 'clientes' => $clientes]);
     }
 
     /**
@@ -29,7 +33,12 @@ class TiendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tienda = new Tienda($request->all());
+        $tienda->save();
+        foreach ($request->cliente_ids as $cliente_id){
+            $tienda->clientes()->attach($cliente_id);
+        }
+        return redirect()->action([TiendaController::class, 'index']);
     }
 
     /**

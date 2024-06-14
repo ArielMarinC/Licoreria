@@ -21,7 +21,7 @@ class VendedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('vendedores.create');
     }
 
     /**
@@ -29,7 +29,9 @@ class VendedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vendedor = new Vendedor($request->all());
+        $vendedor->save();
+        return redirect()->action([VendedorController::class, 'index']);
     }
 
     /**

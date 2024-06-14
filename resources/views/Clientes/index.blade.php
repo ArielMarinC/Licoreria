@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-
-<html>
-    <head>
     <x-layout>
         <h2>Listado de Clientes</h2>
+        <a class="new-button" href="{{ route('clientes.create') }}">Nuevo Cliente</a>
         <table>
             <tr>
                 <th>Nombre y Apellido</th>
@@ -17,9 +14,11 @@
                 <td>{{ $cliente->edad }}</td>
                 <td>{{ $vendedor->telefono }}</td>
                 <td>{{ $vendedor->direccion }}</td>
+                <td>
+                    <a href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>
+                    <a href="{{ route('clientes.show', $cliente->id) }}">Ver</a>
+                </td>
             </tr>
             @endforeach
         </table>
 </x-layout>
-    </body>
-</html>

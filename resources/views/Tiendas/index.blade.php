@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Licoreria</title>
-    </head>
-    <body>
-    <x-layout>
+<x-layout>
         <h2>Listado de Tiendas</h2>
+        <a class="new-button" href="{{ route('tiendas.create') }}">Nueva Tienda</a>
         <table>
             <tr>
                 <th>sucursal</th>
@@ -26,10 +21,12 @@
                 @foreach($tienda->clientes as $cliente)
                     {{ $cliente->nombre_apellido }} <br>
                 @endforeach
+            </td>
+            <td>
+                    <a href="{{ route('tiendas.edit', $tienda->id) }}">Editar</a>
+                    <a href="{{ route('tiendas.show', $tienda->id) }}">Ver</a>
                 </td>
             </tr>
             @endforeach
         </table>
 </x-layout>
-    </body>
-</html>
