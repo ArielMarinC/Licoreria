@@ -13,7 +13,7 @@ class tienda extends Model
 
     protected $table = "tiendas";
     protected $primaryKey = "id";
-    protected $fillable = ['sucursal', 'nivel', 'horas_venta', 'vendedor_id'];
+    protected $fillable = ['sucursal', 'zona', 'horas_venta', 'vendedor_id'];
     protected $guarded = ['id'];
 
     public function vendedor(): BelongsTo {
