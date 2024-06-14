@@ -7,11 +7,7 @@
         </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
 
+{{ $vendedores }}
 
-
-    @php  $count = 0;@endphp
-    @foreach($clientes as $cliente)
-        {{ $count++ }} {{$cliente->nombre_apellido}} {{ $cliente->country }}<br>
-    @endforeach
     </body>
 </html>

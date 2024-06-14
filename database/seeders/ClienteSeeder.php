@@ -35,25 +35,25 @@ class ClienteSeeder extends Seeder
         $cliente3->save();
     
     
-//    $cliente4 = new Cliente();
-//    $cliente4->nombre_apellido = 'Rebeca Arteaga';
-//    $cliente4->edad = 35;
-//    $cliente4->telefono = '72246879';
-//    $cliente4->direccion = 'Av. Heroinas';
-//    $cliente4->save();
+    $cliente4 = new Cliente();
+    $cliente4->nombre_apellido = 'Rebeca Arteaga';
+    $cliente4->edad = 35;
+    $cliente4->telefono = '72246879';
+    $cliente4->direccion = 'Av. Heroinas';
+    $cliente4->save();
     
-//    $cliente5 = new Cliente();
-//    $cliente5->nombre_apellido = 'Andrea Paniagua';
-//    $cliente5->edad = 22;
-//    $cliente5->telefono = '73789545';
-//    $cliente5->direccion = 'Av. Blanco Galingo';
-//    $cliente5->save();
+    $cliente5 = new Cliente();
+    $cliente5->nombre_apellido = 'Andrea Paniagua';
+    $cliente5->edad = 22;
+    $cliente5->telefono = '73789545';
+    $cliente5->direccion = 'Av. Blanco Galingo';
+    $cliente5->save();
     
-//    $cliente6 = new Cliente();
-//    $cliente6->nombre_apellido = 'Lizbedt Torrico';
-//    $cliente6->edad = 36;
-//    $cliente6->telefono = '74578123';
-//    $cliente6->direccion = 'Av. El Fuerte';
-//    $cliente6->save();
+    $cliente6 = new Cliente();
+    $cliente6->nombre_apellido = 'Lizbedt Torrico';
+    $cliente6->edad = 36;
+    $cliente6->telefono = '74578123';
+    $cliente6->direccion = 'Av. El Fuerte';
+    $cliente6->save();
     }
 }

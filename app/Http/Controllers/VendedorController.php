@@ -12,7 +12,7 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        $vendedores = vendedor::all();
+        $vendedores = Vendedor::all();
         return view('vendedores.index', ['vendedores' => $vendedores]);
     }
 
@@ -37,7 +37,8 @@ class VendedorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $vendedor = Vendedor::find($id);
+        return view('vendedores.show', ['vendedores' => $vendedor]);
     }
 
     /**

@@ -8,7 +8,7 @@ use App\Http\Controllers\TiendaController;
 
 
  // Route::get('/', function () {
- //   $vendedores = vendedor::find(2);
+ //   $vendedores = vendedor::find();
 
   //  return view('welcome', ['vendedores' => $vendedores->nombre_apellido]);
 //});
