@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class cliente extends Model
 {
     use HasFactory;
+    protected $table = "cliente";
     protected $primaryKey = "id";
     protected $fillable = ['nombre_apellido', 'edad', 'telefono', 'direccion'];
     protected $guarded = ['id'];

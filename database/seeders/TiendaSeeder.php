@@ -35,11 +35,11 @@ class TiendaSeeder extends Seeder
     //    $tienda3->save();
 
 
-        $tienda1->clientes()->attach(1);
-        $tienda1->clientes()->attach(2);
-        $tienda1->clientes()->attach(3);
+     //   $tienda1->clientes()->attach(1);
+      //  $tienda1->clientes()->attach(2);
+      //  $tienda1->clientes()->attach(3);
         
-        $tienda2->clientes()->attach(1);
-        $tienda2->clientess()->attach(3);
+      //  $tienda2->clientes()->attach(1);
+      //  $tienda2->clientess()->attach(3);
     }
 }

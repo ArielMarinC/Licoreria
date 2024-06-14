@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
     //    Cliente::factory(10)->create();
    //     Tienda::factory(5)->create();
 
-        Tienda::factory()->has(Cliente::factory()->count(5))->create();
-        Tienda::factory()->has(Cliente::factory()->count(5))->create();
-        Tienda::factory()->has(Cliente::factory()->count(3))->create();
+       // Tienda::factory()->has(Cliente::factory()->count(5))->create();
+        //Tienda::factory()->has(Cliente::factory()->count(5))->create();
+        //Tienda::factory()->has(Cliente::factory()->count(3))->create();
 
         User::factory()->create([
             'name' => 'Test User',

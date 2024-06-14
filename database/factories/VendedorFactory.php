@@ -17,7 +17,10 @@ class VendedorFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre_apellido' => $this->faker->firstName() . ' ' . $this->faker->lastName(),
+            'profesion' => $this->faker->randomElement(['Ing. Sistema', 'Ing. Electronico', 'Adm. Empresas', 'Ing. Comercial']),
+            'grado_academico' => $this->faker->randomElement(['Licenciatura', 'Master', 'Tecnico']),
+            'telefono' => $this->faker->phoneNumber()
         ];
     }
 }
