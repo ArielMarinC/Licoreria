@@ -6,18 +6,19 @@
         <title>Licoreria</title>
     </head>
     <body>
+    <x-layout>
         <h2>Listado de Tiendas</h2>
         <table>
             <tr>
                 <th>sucursal</th>
                 <th>zona</th>
                 <th>horas_venta</th>
-                <th>vendedor</th>
-                <th>Clientes</th>
+                <th>Vendedor</th>
+                <th>Cliente</th>
             </tr>
-            @foreach ($Tiendas as $tienda)
+            @foreach ($cursos as $curso)
             <tr>
-                <td>{{ $tienda->msucursal }}</td>
+                <td>{{ $tienda->sucursal }}</td>
                 <td>{{ $tienda->zona }}</td>
                 <td>{{ $tienda->horas_venta }}</td>
                 <td>{{ $tienda->vendedor->nombre_apellido }}</td>
@@ -29,5 +30,6 @@
             </tr>
             @endforeach
         </table>
+</x-layout>
     </body>
 </html>

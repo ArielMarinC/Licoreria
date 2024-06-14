@@ -2,10 +2,8 @@
 
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Licoreria</title>
-    </head>
-    <body>
+    @extends('layout')
+@section('content')
         <h2>Listado de Vendedores</h2>
         <table>
             <tr>
@@ -14,7 +12,7 @@
                 <th>Grado Academico</th>
                 <th>Teléfono</th>
             </tr>
-            @foreach ($vendedores as $vendedores)
+            @foreach ($vendedores as $vendedor)
             <tr>
                 <td>{{ $vendedor->nombre_apellido }}</td>
                 <td>{{ $vendedor->profesion }}</td>
@@ -23,7 +21,9 @@
             </tr>
             @endforeach
         </table>
+@endsection
     </body>
 
     
 </html>
+

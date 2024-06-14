@@ -2,10 +2,7 @@
 
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Licoreria</title>
-    </head>
-    <body>
+    <x-layout>
         <h2>Listado de Clientes</h2>
         <table>
             <tr>
@@ -14,7 +11,7 @@
                 <th>Teléfono</th>
                 <th>Dirección</th>
             </tr>
-            @foreach ($clientes as $clientes)
+            @foreach ($clientes as $cliente)
             <tr>
                 <td>{{ $cliente->nombre_apellido }}</td>
                 <td>{{ $cliente->edad }}</td>
@@ -23,5 +20,6 @@
             </tr>
             @endforeach
         </table>
+</x-layout>
     </body>
 </html>
