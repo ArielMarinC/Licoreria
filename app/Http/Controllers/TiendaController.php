@@ -54,7 +54,10 @@ class TiendaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $vendedores = Vendedor::all();
+        $clientes = Cliente::all();
+        $tienda = Tienda::findOrFail($id);
+        return view('tiendas.edit', ['tienda' => $tienda, 'vendedores' => $vendedores, 'clientes' => $clientes]);
     }
 
     /**
@@ -62,7 +65,17 @@ class TiendaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tienda = Tienda::findOrFail($id);
+        $tienda->sucursal = $request->sucursal;
+        $tienda->zona = $request->nivel;
+        $tienda->horas_venta = $request->horas_venta;
+        $tienda->profesor_id = $request->vendedor_id;
+        $tienda->save();
+        $tienda->clientes()->detach();
+        foreach ($request->cliente_ids as $cliente_id){
+            $tienda->clientes()->attach($cliente_id);
+        }
+        return redirect()->action([TiendaController::class, 'index']);
     }
 
     /**

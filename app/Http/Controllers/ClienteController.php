@@ -47,7 +47,8 @@ class ClienteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.edit', ['cliente' => $cliente]);
     }
 
     /**
@@ -55,7 +56,13 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->nombre_apellido = $request->nombre_apellido;
+        $cliente->edad = $request->edad;
+        $cliente->telefono = $request->telefono;
+        $cliente->direccion = $request->direccion;
+        $cliente->save();
+        return redirect()->action([ClienteController::class, 'index']);
     }
 
     /**

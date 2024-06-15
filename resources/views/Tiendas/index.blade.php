@@ -4,6 +4,7 @@
         <h2>Listado de Tiendas</h2>
         <a class="new-button" href="{{ route('tiendas.create') }}">Nueva Tienda</a>
         <table>
+        <th>Acción</th>
             <tr>
                 <th>sucursal</th>
                 <th>zona</th>
@@ -11,7 +12,7 @@
                 <th>Vendedor</th>
                 <th>Cliente</th>
             </tr>
-            @foreach ($cursos as $curso)
+            @foreach ($tiendas as $tienda)
             <tr>
                 <td>{{ $tienda->sucursal }}</td>
                 <td>{{ $tienda->zona }}</td>

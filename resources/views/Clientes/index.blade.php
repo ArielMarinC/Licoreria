@@ -2,6 +2,7 @@
         <h2>Listado de Clientes</h2>
         <a class="new-button" href="{{ route('clientes.create') }}">Nuevo Cliente</a>
         <table>
+        <th>Acción</th>
             <tr>
                 <th>Nombre y Apellido</th>
                 <th>Edad</th>

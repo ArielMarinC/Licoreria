@@ -48,7 +48,8 @@ class VendedorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $vendedor = Vendedor::findOrFail($id);
+        return view('vendedores.edit', ['vendedor' => $vendedor]);
     }
 
     /**
@@ -56,7 +57,13 @@ class VendedorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $vendedor = Vendedor::findOrFail($id);
+        $vendedor->nombre_apellido = $request->nombre_apellido;
+        $vendedor->profesion = $request->profesion;
+        $vendedor->grado_academico = $request->grado_academico;
+        $vendedor->telefono = $request->telefono;
+        $vendedor->save();
+        return redirect()->action([VendedorController::class, 'index']);
     }
 
     /**
