@@ -33,6 +33,12 @@ class TiendaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'sucursal' => 'required|max:75',
+            'zona' => 'required|max:35',
+            'vendedor_id' => 'required|integer',
+            'cliente_ids' => 'required|array',
+        ]);
         $tienda = new Tienda($request->all());
         $tienda->save();
         foreach ($request->cliente_ids as $cliente_id){
@@ -65,6 +71,12 @@ class TiendaController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'sucursal' => 'required|max:75',
+            'zona' => 'required|max:35',
+            'vendedor_id' => 'required|integer',
+            'cliente_ids' => 'required|array',
+        ]);
         $tienda = Tienda::findOrFail($id);
         $tienda->sucursal = $request->sucursal;
         $tienda->zona = $request->nivel;

@@ -29,6 +29,11 @@ class VendedorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|max:75',
+            'profesion' => 'required|max:35',
+        ]);
+
         $vendedor = new Vendedor($request->all());
         $vendedor->save();
         return redirect()->action([VendedorController::class, 'index']);
@@ -57,6 +62,10 @@ class VendedorController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|max:75',
+            'profesion' => 'required|max:35',
+        ]);
         $vendedor = Vendedor::findOrFail($id);
         $vendedor->nombre_apellido = $request->nombre_apellido;
         $vendedor->profesion = $request->profesion;

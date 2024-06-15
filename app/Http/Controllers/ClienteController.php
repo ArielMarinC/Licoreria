@@ -29,6 +29,10 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|max:75',
+            'edad' => 'required|integer',
+        ]);        
         $cliente = new Cliente($request->all());
         $cliente->save();
         return redirect()->action([ClienteController::class, 'index']);
