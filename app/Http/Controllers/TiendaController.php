@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tienda;
 use App\Models\Cliente;
 use App\Models\Vendedor;
+use Illuminate\Support\Facades\DB;
 
 class TiendaController extends Controller
 {
@@ -44,6 +45,21 @@ class TiendaController extends Controller
             foreach ($request->clientes as $cliente){
                 $tienda->clientes()->attach($cliente->id);
         }
+
+        DB::beginTransaction();
+try {
+    $tienda = new Tienda($request->all());
+    $tienda->save();
+    foreach ($request->cliente_ids as $cliente_id){
+        $tienda->clientes()->attach($cliente_id);
+    }
+    DB::commit();
+}
+catch (\Exception $e){
+    DB::rollBack();
+    return "Error de insercción de datos" . $e->getMessage();
+}
+return redirect()->action([CursoController::class, 'index']);
 
         dd('ok');
         }
