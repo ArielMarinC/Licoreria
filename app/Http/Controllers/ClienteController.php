@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Repositories\ClienteRepository;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Repositories\Exports\ClienteExcel;
 
 class ClienteController extends Controller
 {
@@ -109,5 +111,12 @@ class ClienteController extends Controller
     ];
     $pdf = PDF::loadView('clientes.pdf', $data);
     return $pdf->stream();
+}
+public function reportExcel()
+{
+    $data = [
+        'clientes' => $this->clientes->obtenerLosClientesRegistradosEnUnaTienda(),
+    ];
+    return Excel::download(new ClientesExcel($data), 'clientes.xlsx');
 }
 }

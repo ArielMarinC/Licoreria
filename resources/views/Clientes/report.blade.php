@@ -2,6 +2,7 @@
     <h2>Reporte Tiendas</h2>
     <br>
     <a class="new-button" target="_blank" href="{{ route('clientes.reportPDF') }}">Reporte Clientes PDF</a>
+    <a class="new-button" target="_blank" href="{{ route('clientes.reportExcel') }}">Reporte Cliente Excel</a>
     <table>
         <tr>
             <th>Cliente</th>
