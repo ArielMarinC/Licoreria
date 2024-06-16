@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Repositories\ClienteRepository;
+use PDF;
 
 class ClienteController extends Controller
 {
@@ -100,4 +101,13 @@ class ClienteController extends Controller
 //        $cliente = Cliente::find($id);
 //        $cliente->delete();
     }
+
+    public function reportPDF()
+{
+    $data = [
+        'clientes' => $this->tiendas->obtenerLosClientesRegistradosEnUnaTienda(),
+    ];
+    $pdf = PDF::loadView('clientes.pdf', $data);
+    return $pdf->stream();
+}
 }

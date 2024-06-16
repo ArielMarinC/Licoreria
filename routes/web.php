@@ -97,3 +97,5 @@ Route::delete('/tiendas/form/delete/{tiendaId}', [TiendaController::class, 'dest
 // Route::delete('/tiendas/{id}', [TiendaController::class, 'destroy'])->name('tiendas.destroy');
 
 Route::get('/clientes/reporte/web', [ClienteController::class, 'report'])->name('clientes.report');
+
+Route::get('/clientes/reporte/pdf', [ClienteController::class, 'reportPDF'])->name('clientes.reportPDF');

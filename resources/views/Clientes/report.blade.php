@@ -1,6 +1,7 @@
 <x-layout>
     <h2>Reporte Tiendas</h2>
     <br>
+    <a class="new-button" target="_blank" href="{{ route('clientes.reportPDF') }}">Reporte Clientes PDF</a>
     <table>
         <tr>
             <th>Cliente</th>
