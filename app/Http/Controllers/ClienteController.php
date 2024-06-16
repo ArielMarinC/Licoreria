@@ -4,16 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Repositories\ClienteRepository;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $tiendas;
+
+    public function __construct(ClienteRepository $tiendas){
+        $this->tiendas = $tiendas;
+    }
     public function index()
     {
         $clientes = Cliente::all();
         return view('clientes.index', ['clientes' => $clientes]);
+    }
+
+    public function report()
+    {
+        $clientes = $this->tiendas->obtenerLosClientesRegistradosEnUnaTienda();
+        return view('alumnos.report', ['alumnos' => $clientes]);
     }
 
     /**

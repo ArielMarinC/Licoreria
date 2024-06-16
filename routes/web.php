@@ -92,6 +92,8 @@ Route::delete('/tiendas/form/delete/{tiendaId}', [TiendaController::class, 'dest
 // Route::get('/clientes/{id}/ver', [ClienteController::class, 'show'])->name('clientes.show');
 // Route::get('/tiendas/{id}/ver', [TiendaController::class, 'show'])->name('tiendas.show');
 
-Route::delete('/vendedores/{id}', [VendedorController::class, 'destroy'])->name('vendedores.destroy');
-Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
-Route::delete('/tiendas/{id}', [TiendaController::class, 'destroy'])->name('tiendas.destroy');
+// Route::delete('/vendedores/{id}', [VendedorController::class, 'destroy'])->name('vendedores.destroy');
+// Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
+// Route::delete('/tiendas/{id}', [TiendaController::class, 'destroy'])->name('tiendas.destroy');
+
+Route::get('/clientes/reporte/web', [ClienteController::class, 'report'])->name('clientes.report');
