@@ -13,8 +13,15 @@ class VendedorController extends Controller
     public function index()
     {
         $vendedores = Vendedor::all();
-        return view('vendedores.index', ['vendedores' => $vendedores]);
+    //    dd(csrf_token());
+       return view('vendedores.index', ['vendedores' => $vendedores]);
     }
+
+//    public function search($nombre, $apellido, $sucursal)
+//    {
+//        $vendedores = Vendedor::where('nombre_apellido', '=', 'nombre')->where;
+//        return view('vendedores.index', ['vendedores' => $vendedores]);
+//    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,14 +36,24 @@ class VendedorController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre_apellido' => 'required|max:75',
-            'profesion' => 'required|max:35',
-        ]);
+        $vendedor = new Vendedor();
+        $vendedor-> nombre_apellido = $request->nombre_apellido;
+        $vendedor->profesion = $request->profesion;
+        $vendedor->grado_academico = $request->grado_academico;
+        $vendedor->telefono = $request->telefono;
+        $vendedor->save(); 
+        return view('vendedores.create', ['vendedores' => null, 'message' => 'El vendedor fue registrado correctamente']);
+    ;       
+//        $request->validate([
+//            'nombre_apellido' => 'required|max:75',
+//            'profesion' => 'required|max:35',
+//            'grado_academico' => 'required|max:35',
+ //           'telefono' => 'required|max:35',
+ //       ]);
 
-        $vendedor = new Vendedor($request->all());
-        $vendedor->save();
-        return redirect()->action([VendedorController::class, 'index']);
+ //       $vendedor = new Vendedor($request->all());
+ //       $vendedor->save();
+ //       return redirect()->action([VendedorController::class, 'index']);
     }
 
     /**
@@ -44,8 +61,8 @@ class VendedorController extends Controller
      */
     public function show(string $id)
     {
-        $vendedor = Vendedor::find($id);
-        return view('vendedores.show', ['vendedores' => $vendedor]);
+        $vendedor = Vendedor::findOrFail($id);
+        return view('vendedor.show', ['vendedor' => $vendedor]);
     }
 
     /**
@@ -80,6 +97,19 @@ class VendedorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if(Tienda::where('vendedor_id', '=', $id)->first() != null){
+            return redirect()->back()->withErrors(['mensaje' => 'El vendedor no puede ser eliminado.']);
+        }
+        else{
+            $vendedor = Vendedor::findOrFail($id);
+            $vendedor->delete();
+            return redirect()->action([VendedorController::class, 'index']);
+        }
+       
+       
+       
+       
+ //       $vendedor = Vendedor::find($id);
+ //       $vendedor->delete();
     }
 }

@@ -10,11 +10,17 @@
         <li><a href="{{ route('alumnos.index') }}">Alumnos</a></li>
         <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
     </ul>
+    <script>
+        function EliminarRegistro(value){
+        action = confirm(value) ? true: event.preventDefault()
+}
+</script>
         <main>
             @yield('content')
         </main>
     </body>
 </html>
+
 
 <style>
     body {

@@ -33,26 +33,49 @@ class TiendaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'sucursal' => 'required|max:75',
-            'zona' => 'required|max:35',
-            'vendedor_id' => 'required|integer',
-            'cliente_ids' => 'required|array',
-        ]);
-        $tienda = new Tienda($request->all());
-        $tienda->save();
-        foreach ($request->cliente_ids as $cliente_id){
-            $tienda->clientes()->attach($cliente_id);
+        try {
+            $tienda = new tienda();
+            $tienda->sucursal = $request->sucursal;
+            $tienda->zona = $request->zona;
+            $tienda->horas_venta = $request->horas_venta;
+            $tienda->vendedor_id = $request->vendedor_id;
+            $tienda->save();
+
+            foreach ($request->clientes as $cliente){
+                $tienda->clientes()->attach($cliente->id);
         }
-        return redirect()->action([TiendaController::class, 'index']);
+
+        dd('ok');
+        }
+        catch (\Exception) {
+            dd('error');
+
+        }
+
+
     }
+
+ //       $request->validate([
+ //           'sucursal' => 'required|max:75',
+ //           'zona' => 'required|max:35',
+ //           'vendedor_id' => 'required|integer',
+ //           'cliente_ids' => 'required|array',
+ //       ]);
+ //       $tienda = new Tienda($request->all());
+ //       $tienda->save();
+ //       foreach ($request->cliente_ids as $cliente_id){
+  //          $tienda->clientes()->attach($cliente_id);
+ //       }
+ //       return redirect()->action([TiendaController::class, 'index']);
+ //   }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $tienda = tienda::findOrFail($id);
+        return view('tiendas.show', ['tiendas' =>$tienda]);
     }
 
     /**
@@ -95,6 +118,13 @@ class TiendaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tienda = Tienda::findOrFail($id);
+        $tienda->alumnos()->detach();
+        $tienda->delete();
+        return redirect()->action([TiendaController::class, 'index']);
+
+//        $tienda = Tienda::find($id);
+//        $tienda->delete();
     }
 }
+

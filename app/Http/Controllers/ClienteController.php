@@ -43,7 +43,8 @@ class ClienteController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.view', ['cliente' => $cliente]);
     }
 
     /**
@@ -60,6 +61,10 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|max:75',
+            'edad' => 'required|integer',
+        ]);
         $cliente = Cliente::findOrFail($id);
         $cliente->nombre_apellido = $request->nombre_apellido;
         $cliente->edad = $request->edad;
@@ -74,6 +79,16 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if(DB::table('cliente_tienda')->where('cliente_id', '=', $id)->first() != null){
+            return redirect()->back()->withErrors(['mensaje' => 'El cliente no puede ser eliminado.']);
+      }
+      else{
+            $cliente = Cliente::findOrFail($id);
+            $cliente->delete();
+            return redirect()->action([ClienteController::class, 'index']);
+      }
+
+//        $cliente = Cliente::find($id);
+//        $cliente->delete();
     }
 }

@@ -1,8 +1,13 @@
-    <x-layout>
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Licorería</title>
+    </head>
+    <body>
         <h2>Listado de Clientes</h2>
-        <a class="new-button" href="{{ route('clientes.create') }}">Nuevo Cliente</a>
         <table>
-        <th>Acción</th>
             <tr>
                 <th>Nombre y Apellido</th>
                 <th>Edad</th>
@@ -13,13 +18,27 @@
             <tr>
                 <td>{{ $cliente->nombre_apellido }}</td>
                 <td>{{ $cliente->edad }}</td>
-                <td>{{ $vendedor->telefono }}</td>
-                <td>{{ $vendedor->direccion }}</td>
+                <td>{{ $cliente->telefono }}</td>
+                <td>{{ $cliente->direccion }}</td>
                 <td>
-                    <a href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>
-                    <a href="{{ route('clientes.show', $cliente->id) }}">Ver</a>
+                <a href="{{ route('clientes.show', $cliente->id) }}">Ver</a>
                 </td>
             </tr>
             @endforeach
         </table>
-</x-layout>
+    </body>
+</html>
+
+<style>
+    body {
+        margin: auto;
+        padding: 50px;
+    }
+    table {
+        border-collapse:collapse;
+        width: 100%;
+    }
+    table, td, th {
+        border: 1px solid black;
+    }
+</style>
