@@ -8,7 +8,7 @@
 <label><strong>Teléfono:</strong> {{ $vendedor->telefono }}</label><br>
 @if($errors->any())
     <p class="error-message">{{$errors->first('mensaje')}}</p>
-@endif
+@endif 
 <br>
 <form action="{{ route('vendedores.destroy', $vendedor->id) }}" method ="POST" >
     @csrf

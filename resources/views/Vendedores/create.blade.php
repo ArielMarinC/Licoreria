@@ -1,23 +1,32 @@
 @extends('layout')
+@section('header') VENDEDORES @endsection
 @section('content')
-<h2>Nuevo Vendedor</h2>
-<form action="{{ route('vendedores.store') }}" method ="POST">
-    @csrf
-    <label>Nombres y Apellidos:</label>
-    <input type="text" name="nombre_apellido" placeholder="Nombres y Apellidos" value="{{ old('nombre_apellido') }}">
-    @error('nombre_apellido')
-    <p class="error-message">{{ $message }}</p>
-@enderror
-    <label>Profesión:</label>
-    <input type="text" name="profesion" placeholder="Profesión" value="{{ old('profesion') }}">
-    @error('profesion')
-    <p class="error-message">{{ $message }}</p>
-@enderror
-    <label>Grado Academico:</label>
-    <input type="text" name="grado_academico" placeholder="Grado Academico" value="{{ old('grado_academico') }}">
-    <label>Teléfono:</label>
-    <input type="text" name="telefono" placeholder="Teléfono" value="{{ old('telefono') }}">
-    <input type="submit" value="Guardar">
-</form>
+
+<div>
+
+        <form action="{{route('vendedores.store') }}" method="POST">
+        @csrf 
+            <label>Nombre del Vendedor</label>
+            <input type="text" name="nombre_apellido" id="Nombres y Apellidos" value="{{ old('nombre_apellido') }}"/>
+            @if($errors->has('nombre_apellido'))
+                <div class="error">{{$errors->first('nombre_apellido')}}</div>
+            @endif
+            <br>
+            <label>Profesión</label>
+            <input type="text" name="profesion" id="profesion" value="{{ old('profesion') }}"/><br>
+            @if($errors->has('profesion'))
+                <div class="error">{{$errors->first('profesion')}}</div>
+            @endif
+            <label>Grado Académico</label>
+            <input type="text" name="grado_academico" id="grado_academico" value="{{ old('grado_academico') }}"/><br>
+            <label>Teléfono</label>
+            <input type="text" name="telefono" id="telefono" value="{{ old('telefono') }}"><br>           
+             @if($errors->has('telefono'))
+                <div class="error">{{$errors->first('telefono')}}</div>
+            @endif
+            <button type="submit">Guardar Vendedor</button>
+        </form>
+</div>
+
 @endsection
 

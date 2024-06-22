@@ -1,33 +1,33 @@
-<!DOCTYPE html>
+@extends('layout')
+@section('content')
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Licorería</title>
-    </head>
-    <body>
-        <h2>Listado de Clientes</h2>
+
+        <main>
+        <h1>Listado de Clientes</h1>
+        <div class="actions">
+        <a class="button-link" href="#">Nuevo Cliente</a>
+        </div>
         <table>
             <tr>
-                <th>Nombre y Apellido</th>
+                <th>Cliente</th>
                 <th>Edad</th>
                 <th>Teléfono</th>
                 <th>Dirección</th>
+
             </tr>
-            @foreach ($clientes as $cliente)
-            <tr>
-                <td>{{ $cliente->nombre_apellido }}</td>
-                <td>{{ $cliente->edad }}</td>
-                <td>{{ $cliente->telefono }}</td>
-                <td>{{ $cliente->direccion }}</td>
-                <td>
-                <a href="{{ route('clientes.show', $cliente->id) }}">Ver</a>
-                </td>
-            </tr>
-            @endforeach
+<tbody>
+    @foreach($clientes as $cliente)
+    <tr>
+        <td>{{ $cliente->nombre_apellido}}</td>
+        <td>{{ $cliente->edad}}</td>
+        <td>{{ $cliente->telefono}}</td>
+        <td>{{ $cliente->direccion}}</td>
+    </tr>
+</tbody>
         </table>
-    </body>
-</html>
+</main>
+
+@endsection
 
 <style>
     body {

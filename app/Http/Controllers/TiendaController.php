@@ -34,6 +34,12 @@ class TiendaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'sucursal' => 'required|max:75',
+            'zona' => 'required|max:35',
+            'vendedor_id' => 'required|integer',
+            'cliente_ids' => 'required|array',
+        ]);
         try {
             $tienda = new tienda();
             $tienda->sucursal = $request->sucursal;
@@ -91,7 +97,7 @@ return redirect()->action([CursoController::class, 'index']);
     public function show(string $id)
     {
         $tienda = tienda::findOrFail($id);
-        return view('tiendas.show', ['tiendas' =>$tienda]);
+        return view('tiendas.view', ['tiendas' =>$tienda]);
     }
 
     /**

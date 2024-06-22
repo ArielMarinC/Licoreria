@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <title>Licoreria</title>
     </head>
     <body>
-        <h2>Reporte Clientes</h2>
-        <br>
+        <h1>Listado de Clientes</h1>
+        <a href="/clientes/create">Nuevo Vendedor</a>
         <table>
             <tr>
-                <th>Cliente</th>
+                <th>Nombre y Apellido</th>
                 <th>Edad</th>
-                <th>Sucursal</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
             </tr>
-            @foreach ($clientes as $cliente)
-                <tr>
-                    <td>{{ $cliente->nombre_apellido }}</td>
-                    <td>{{ $cliente->edad }}</td>
-                    <td>
-                        @foreach($cliente->tiendas as $tienda)
-                            {{ $tienda->sucursal }}<br>
-                        @endforeach
-                    </td>
-                </tr>
+            @foreach ($vendedores as $vendedor)
+            <tr>
+                <td>{{ $cliente->nombre_apellido }}</td>
+                <td>{{ $cliente->edad }}</td>
+                <td>{{ $cliente->telefono }}</td>
+                <td>{{ $cliente->direccion }}</td>
+                <td>
+                <a href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>
+                </td>
+            </tr>
             @endforeach
         </table>
     </body>
 </html>
+        
+<style>
+    body {
+        margin: auto;
+        padding: 50px;
+    }
+    table {
+        border-collapse:collapse;
+        width: 100%;
+    }
+    table, td, th {
+        border: 1px solid black;
+    }
+</style>

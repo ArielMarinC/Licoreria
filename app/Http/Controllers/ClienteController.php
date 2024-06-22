@@ -25,7 +25,7 @@ class ClienteController extends Controller
     public function report()
     {
         $clientes = $this->tiendas->obtenerLosClientesRegistradosEnUnaTienda();
-        return view('alumnos.report', ['alumnos' => $clientes]);
+        return view('clientes.report', ['clientes' => $clientes]);
     }
 
     /**
@@ -56,7 +56,7 @@ class ClienteController extends Controller
     public function show(string $id)
     {
         $cliente = Cliente::findOrFail($id);
-        return view('clientes.view', ['cliente' => $cliente]);
+        return view('clientes.show', ['cliente' => $cliente]);
     }
 
     /**
@@ -78,6 +78,7 @@ class ClienteController extends Controller
             'edad' => 'required|integer',
         ]);
         $cliente = Cliente::findOrFail($id);
+        $cliente->code = $request->code;
         $cliente->nombre_apellido = $request->nombre_apellido;
         $cliente->edad = $request->edad;
         $cliente->telefono = $request->telefono;

@@ -271,5 +271,9 @@ return [
         'username'                 => 'usuario',
         'value'                    => 'valor',
         'year'                     => 'año',
+        'nombre_apellido'           => 'Nombre y Apellido',
+        'profesion'                 => 'Profesión',
+        'telefono'                 => 'Teléfono',
+        
     ],
 ];

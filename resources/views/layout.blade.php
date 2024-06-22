@@ -2,26 +2,36 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Licoreria</title>
+        <title>@yield('header')</title>
     </head>
     <body>
+    <div>
+    @yield('menu')
+    </div>
+    <div>
     <ul>
-        <li><a href="{{ route('profesores.index') }}">Profesores</a></li>
-        <li><a href="{{ route('alumnos.index') }}">Alumnos</a></li>
-        <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
-    </ul>
+            <li><a href="{{ route('vendedores.index') }}">Vendedores</a></li>
+
+
+        </ul>
+
+    </div>
+    <div>
+        @yield('content')
+    </div>
+    <footer>
+        @yield('footer')
+    </footer>
+    </body>
+    </html>
+
+
     <script>
         function EliminarRegistro(value){
         action = confirm(value) ? true: event.preventDefault()
 }
 </script>
-        <main>
-            @yield('content')
-        </main>
-    </body>
-</html>
-
-
+       
 <style>
     body {
         margin: auto;
@@ -41,6 +51,10 @@
         overflow: hidden;
         border: 1px solid #e7e7e7;
         background-color: #f3f3f3;
+    }
+    th{
+        text-transform: uppercase;
+        background-color: #cbd5e0;
     }
     li {
         float: left;
@@ -96,5 +110,18 @@ input[type=text], select {
     p {
         color: red;
     }
+    .actions {
+        padding-button: 12px;
+    }
+    .button-link{
+        padding: 6px;
+        background-color: #FFFF00;
+        color: red;
+        border: 8px;
+    }
+    .error{
+        color: red;
+    }
+
 </style>
 

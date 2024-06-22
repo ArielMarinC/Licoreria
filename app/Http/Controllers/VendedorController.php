@@ -12,7 +12,7 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        $vendedores = Vendedor::all();
+        $vendedores = Vendedor::select('id', 'nombre_apellido', 'profesion', 'grado_academico', 'telefono')->orderBy('nombre_apellido', 'ASC')->get();
     //    dd(csrf_token());
        return view('vendedores.index', ['vendedores' => $vendedores]);
     }
@@ -36,13 +36,23 @@ class VendedorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre_apellido' => 'required|min:3',
+            'profesion' => 'required',
+            'grado_academico' => 'required',
+            'telefono' => 'required|numeric'
+        ]);
+
         $vendedor = new Vendedor();
         $vendedor-> nombre_apellido = $request->nombre_apellido;
         $vendedor->profesion = $request->profesion;
         $vendedor->grado_academico = $request->grado_academico;
         $vendedor->telefono = $request->telefono;
         $vendedor->save(); 
-        return view('vendedores.create', ['vendedores' => null, 'message' => 'El vendedor fue registrado correctamente']);
+        return redirect()->action([VendedorController::class, 'index']);
+
+
+//        return view('vendedores.create', ['vendedores' => null, 'message' => 'El vendedor fue registrado correctamente']);
     ;       
 //        $request->validate([
 //            'nombre_apellido' => 'required|max:75',
@@ -62,7 +72,7 @@ class VendedorController extends Controller
     public function show(string $id)
     {
         $vendedor = Vendedor::findOrFail($id);
-        return view('vendedor.show', ['vendedor' => $vendedor]);
+        return view('vendedores.view', ['vendedor' => $vendedor]);
     }
 
     /**
@@ -70,7 +80,7 @@ class VendedorController extends Controller
      */
     public function edit(string $id)
     {
-        $vendedor = Vendedor::findOrFail($id);
+        $vendedor = Vendedor::find($id);
         return view('vendedores.edit', ['vendedor' => $vendedor]);
     }
 

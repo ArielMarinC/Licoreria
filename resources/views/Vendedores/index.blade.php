@@ -1,17 +1,18 @@
-<!DOCTYPE html>
+@extends('layout')
+@section('header') VENDEDORES @endsection
+@section('content')
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Licoreria</title>
-    </head>
-    <body>
-        <h2>Listado de Vendedores</h2>
+
+<main>
+<h1>Listado de Vendedores</h1>
+<div class="actions">       
+    <a class="button-link" href="/vendedores/create">Nuevo Vendedor</a>
+</div>
         <table>
             <tr>
                 <th>Nombre y Apellido</th>
                 <th>Profesión</th>
-                <th>Grado Academico</th>
+                <th>Grado Académico</th>
                 <th>Teléfono</th>
             </tr>
             @foreach ($vendedores as $vendedor)
@@ -21,14 +22,18 @@
                 <td>{{ $vendedor->grado_academico }}</td>
                 <td>{{ $vendedor->telefono }}</td>
                 <td>
-                <a href="{{ route('vendedores.show', $vendedor->id) }}">Ver</a>
+                <a href="{{ route('vendedores.edit', $vendedor->id) }}">Editar</a>
                 </td>
             </tr>
             @endforeach
         </table>
-    </body>
-</html>
+</main>
+<div>
+    <p>Todos los derechos reservados Actualización I UCATEC</p>
+</div>
 
+@endsection
+        
 <style>
     body {
         margin: auto;
