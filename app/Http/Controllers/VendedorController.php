@@ -7,13 +7,18 @@ use App\Models\Vendedor;
 
 class VendedorController extends Controller
 {
+    protected $reportVendedor;
+    public function __construc(VendedorRepository $reportVendedor)
+    {
+        $this->reportVendedor = $reportVendedor;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+    //    $vendedores = $this->reportVendedor->getVendedorTienda();
         $vendedores = Vendedor::select('id', 'nombre_apellido', 'profesion', 'grado_academico', 'telefono')->orderBy('nombre_apellido', 'ASC')->get();
-    //    dd(csrf_token());
        return view('vendedores.index', ['vendedores' => $vendedores]);
     }
 

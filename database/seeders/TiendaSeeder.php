@@ -27,12 +27,33 @@ class TiendaSeeder extends Seeder
         $tienda2->vendedor_id = 2;
         $tienda2->save();
         
-    //    $tienda3 = new Tienda();
-    //    $tienda3->sucursal = 'Blanco Galindo';
-    //    $tienda3->zona = 'Oeste';
-    //    $tienda3->horas_venta = '120 Horas';
-    //    $tienda3->vendedor_id = 3;
-    //    $tienda3->save();
+        $tienda3 = new Tienda();
+        $tienda3->sucursal = 'Blanco Galindo';
+        $tienda3->zona = 'Oeste';
+        $tienda3->horas_venta = '120 Horas';
+        $tienda3->vendedor_id = 3;
+        $tienda3->save();
+
+        $tienda3 = new Tienda();
+        $tienda3->sucursal = 'Panamericana';
+        $tienda3->zona = 'Sud';
+        $tienda3->horas_venta = '120 Horas';
+        $tienda3->vendedor_id = 1;
+        $tienda3->save();
+
+        $tienda3 = new Tienda();
+        $tienda3->sucursal = 'Villazon';
+        $tienda3->zona = 'Este';
+        $tienda3->horas_venta = '120 Horas';
+        $tienda3->vendedor_id = 4;
+        $tienda3->save();
+
+        $tienda3 = new Tienda();
+        $tienda3->sucursal = 'Quillacollo';
+        $tienda3->zona = 'Oeste';
+        $tienda3->horas_venta = '120 Horas';
+        $tienda3->vendedor_id = 5;
+        $tienda3->save();
 
 
      //   $tienda1->clientes()->attach(1);

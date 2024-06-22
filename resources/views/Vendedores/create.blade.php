@@ -2,7 +2,8 @@
 @section('header') VENDEDORES @endsection
 @section('content')
 
-<div>
+<div class="container">
+    
 
         <form action="{{route('vendedores.store') }}" method="POST">
         @csrf 

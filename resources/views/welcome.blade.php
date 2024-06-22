@@ -2,12 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Licoreria</title>
+        <title>Comercio</title>
 
-        </head>
+    </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
 
+    
+    Datos de Comercio
+ 
 
-
+    
     </body>
 </html>

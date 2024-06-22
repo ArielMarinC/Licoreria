@@ -11,6 +11,8 @@
     <div>
     <ul>
             <li><a href="{{ route('vendedores.index') }}">Vendedores</a></li>
+            
+
 
 
         </ul>

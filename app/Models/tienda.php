@@ -20,7 +20,7 @@ class tienda extends Model
         return $this->belongsTo(vendedor::class);
     }
 
-    public function cliente(): BelongsToMany {
+    public function clientes(): BelongsToMany {
         return $this->belongsToMany(cliente::class);
     }
 }

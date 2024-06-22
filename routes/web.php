@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use App\Http\Models\Cliente;
 use App\Http\Controllers\VendedorController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\TiendaController;
+use App\Http\Controllers\Reportes\VendedorTiendaController;
+
 
 
 
@@ -25,7 +29,7 @@ use App\Http\Controllers\TiendaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['cientes' => $clientes]);
 });
 
 // Route::get('/vendedores', [VendedorController::class, 'index'])->name('vendedores.index');
@@ -63,6 +67,9 @@ Route::get('/', function () {
 // Route::get('/clientes/reporte/pdf', [ClienteController::class, 'reportPDF'])->name('clientes.reportPDF');
 // Route::get('/clientes/reporte/excel', [ClienteController::class, 'reportExcel'])->name('clientes.reportExcel');
 
+
+Route::get('reportes/vendedores', [VendedorTiendaController::class, 'index'])->name('reportes.vendedores.index');
+Route::get('reportes/vendedores/pdf', [VendedorTiendaController::class, 'report'])->name('reportes.vendedores.pdf');
 
 Route::get('/vendedores', [VendedorController::class, 'index'])->name('vendedores.index');
 //Route::get('/vendedores/{vendedorId}', [VendedorController::class, 'show']);

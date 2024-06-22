@@ -15,7 +15,6 @@ return new class extends Migration
             $table->integer('edad');
             $table->string('telefono', 35)->nullable();
             $table->string('direccion', 75)->nullable();
-            
             $table->timestamps();
         });
     }

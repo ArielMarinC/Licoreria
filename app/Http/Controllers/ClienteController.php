@@ -44,8 +44,14 @@ class ClienteController extends Controller
         $request->validate([
             'nombre_apellido' => 'required|max:75',
             'edad' => 'required|integer',
+            'telefono' => 'required',
+            'direccion' => 'required'
         ]);        
         $cliente = new Cliente($request->all());
+        $student->nombre_apellido = ucfirst(strtolower($request->nombre_apellido));
+        $student->edad = $request->edad;
+        $student->telefono = $request->telefono;
+        $student->direccion = $request->direccion;
         $cliente->save();
         return redirect()->action([ClienteController::class, 'index']);
     }
